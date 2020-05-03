@@ -61,6 +61,7 @@ function addItem() {
 
     info.gender = gender,
     info.type = type,
+    info.name = name,
     info.contact = contact
     info.price = price,
     info.photo = photo,
