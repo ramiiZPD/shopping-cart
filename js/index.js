@@ -1,5 +1,15 @@
 function addItem() {
 
+    let info = {
+        'gender': '',
+        'type': '',
+        'name': '',
+        'price': '',
+        'contact': '',
+        'photo': '',
+        'description': ''
+    };
+
     let gender = document.querySelector('#gender').value;
 
     let type = document.querySelector('#type').value;
@@ -49,9 +59,18 @@ function addItem() {
         return;
     }
 
+    info.gender = gender,
+    info.type = type,
+    info.contact = contact
+    info.price = price,
+    info.photo = photo,
+    info.description = description,
+    
+    localStorage.setItem("info", JSON.stringify(info));
+    
+    console.log(info);
+
     window.location.replace('./new1.html');
 
-    document.getElementById('contactView').value= 'ásdas';
 
-    console.log('aaaa');
 }

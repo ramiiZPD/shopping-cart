@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="css/style.css"/> 
-        <script src="js/index.js"></script>
-    </head>
-    <body>
 
-        <div class="row">
-			<div class="col-25">
-			  <label for="lname">Contact Details</label>
-			</div>
-			<div class="col-75">
-			  <input type="text" id="contactView" placeholder="Contact Details..">
-			</div>
-		</div>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script src="js/index.js"></script>
+</head>
 
-    </body>
+<body>
+
+  <div class="row">
+    <div class="col-25">
+      <label for="lname">Contact Details</label>
+    </div>
+    <div class="col-75">
+
+      <input type="text" id="contactView" placeholder="Contact Details..">
+    </div>
+  </div>
+  <script>
+      var info = JSON.parse(localStorage.getItem('info'));
+      console.log(info);
+
+
+      function showData() { 
+        var contact = document.getElementById("contactView"); 
+
+        contact.value = info.contact; 
+      } 
+
+      showData();
+    </script>
+</body>
+
 </html>
