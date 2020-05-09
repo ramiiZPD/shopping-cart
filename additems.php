@@ -23,7 +23,7 @@
 
 	<div class="row">
   <div class="col-sm-6" >
-    <a style="padding-left: 30px;color:red" href="new1.php">Direct to Item List</a>
+    <a style="padding-left: 30px;color:red" href="Items.php">Direct to Item List</a>
 	</div>
 </div>
 	

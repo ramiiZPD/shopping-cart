@@ -1,5 +1,5 @@
 "# shopping-cart"
 
 ###DB Connection
-Setup DB connection in daatabaseconn.php
+Setup DB connection in databaseconn.php
 Execute sql file (sql.txt)

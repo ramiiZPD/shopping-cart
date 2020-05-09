@@ -25,7 +25,7 @@
 
   <div class="row">
   <div class="col-sm-6" s>
-    <a style="padding-left: 30px;color:red" href="new.php">Direct to Item Form</a>
+    <a style="padding-left: 30px;color:red" href="additems.php">Direct to Item Form</a>
   </div>
   
 </div>
@@ -33,11 +33,7 @@
   <div>
                       <?php
 
-                        if( isset($_POST['update'])){
-
-                          // $itemname = $_POST['itemname'];
-
-                        }
+                       
 
                         if( isset($_POST['delete'])){
 
@@ -70,7 +66,7 @@
         </tr>
       </thead>
       <tbody>
-
+      
       <?php
 
         $result = mysqli_query($conn,"SELECT * FROM items");
@@ -79,6 +75,12 @@
         {
           echo "<form action='' method='POST'>";
           echo "<input type='hidden' value='". $row['id']."' name='itemid' />";
+          echo "<input type='hidden' value='". $row['gender']."' name='genderval' />";
+          echo "<input type='hidden' value='". $row['itemname']."' name='itemnameval' />";
+          echo "<input type='hidden' value='". $row['itemprice']."' name='itempriceval' />";
+          echo "<input type='hidden' value='". $row['type']."' name='typeval' />";
+          echo "<input type='hidden' value='". $row['contactdetails']."' name='contactdetailsval' />";
+          echo "<input type='hidden' value='". $row['itemdescription']."' name='itemdescriptionval' />";
           echo "<tr>";
           echo "<td>" . $row['id'] . "</td>";
           echo "<td>" . $row['gender'] . "</td>";
@@ -86,7 +88,7 @@
           echo "<td>" . $row['itemname'] . "</td>";
           echo "<td>" . $row['itemprice'] . "</td>";
           echo "<td>" . $row['itemdescription'] . "</td>";
-          echo "<td><input type='submit' name='update' value='Update' class='btn btn-danger' /></td>";
+          echo "<td><input type='submit' value='Load' class='btn btn-danger' /></td>";
           echo "<td><input type='submit' name='delete' value='Delete' class='btn btn-danger' /></td>";
           echo "</tr>";
           echo "</form>";
@@ -107,7 +109,7 @@
         </div>
         <div class="col-75">
 
-          <input type="text" id="nameView" name="itemname" placeholder="Item Name.." disabled>
+          <input type="text" id="itemname" name="itemname" value="<?php echo $_POST['itemnameval'] ?>" placeholder="Item Name.." disabled>
         </div> 
       </div>
       <div class="row">
@@ -116,7 +118,7 @@
         </div>
         <div class="col-75">
 
-          <input type="text" id="priceView" placeholder="Price.." disabled>
+          <input type="text" id="priceView" value="<?php echo $_POST['itempriceval'] ?>" placeholder="Price.." disabled>
         </div> 
       </div>
       <div class="row">
@@ -125,7 +127,7 @@
         </div>
         <div class="col-75">
 
-          <input type="text" id="genderView" placeholder="Item for.." disabled>
+          <input type="text" id="genderView" value="<?php echo $_POST['genderval'] ?>" placeholder="Item for.." disabled>
         </div> 
       </div>
       <div class="row">
@@ -134,7 +136,7 @@
         </div>
         <div class="col-75">
 
-          <input type="text" id="typeView" placeholder="Type.." disabled>
+          <input type="text" id="typeView" value="<?php echo $_POST['typeval'] ?>" placeholder="Type.." disabled>
         </div> 
       </div>
       <div class="row">
@@ -143,7 +145,7 @@
         </div>
         <div class="col-75">
 
-          <input type="text" id="contactView" placeholder="Contact Details.." disabled>
+          <input type="text" id="contactView" value="<?php echo $_POST['contactdetailsval'] ?>" placeholder="Contact Details.." disabled>
         </div> 
       </div>
       <div class="row">
@@ -152,9 +154,23 @@
         </div>
         <div class="col-75">
 
-          <input type="text" id="descriptionView" placeholder="Description.." disabled>
+          <input type="text" id="itemdescription" name="itemdescription" value="<?php echo $_POST['itemdescriptionval'] ?>" placeholder="Description.." disabled>
         </div> 
       </div>
+
+      <div>
+                      <?php
+
+                        if( isset($_POST['update'])){
+
+                          // $itemdescription = $_POST['itemid'];
+
+                        }
+
+                      ?>
+
+                    </div>
+
       </form>
     </div>
   <script>
