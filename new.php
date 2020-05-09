@@ -1,18 +1,31 @@
 <?php
 	require_once('databaseconn.php');
-	
-	
-
 ?>
 <!DOCTYPE html>
 <html>
 <head>
+
+  <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="css/style.css"/> 
 	<script src="js/index.js"></script>
 </head>
 <body>
 
 	<h2><center>ADD ITEMS</center></h2>
+
+	<div class="row">
+  <div class="col-sm-6" >
+    <a style="padding-left: 30px;color:red" href="new1.php">Direct to Item List</a>
+	</div>
+</div>
 	
 	<div class="container">
 	  <form action="new.php" method="post" enctype='multipart/form-data'>
@@ -117,6 +130,7 @@
                            
                             if(mysqli_query($conn, $query)) {
 															echo "<div class='alert alert-success'>Record Added Successfully</div>";
+
 														} else {
 															echo "Error: " . $sql . "" . mysqli_error($conn);
 														};
