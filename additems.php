@@ -28,7 +28,7 @@
 </div>
 	
 	<div class="container">
-	  <form action="new.php" method="post" enctype='multipart/form-data'>
+	  <form action="additems.php" method="post" enctype='multipart/form-data'>
 		<div class="row">
 			<div class="col-25">
 			  <label for="gender">Item For</label>

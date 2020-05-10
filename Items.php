@@ -33,6 +33,13 @@
   <div>
                       <?php
 
+
+                        if( isset($_POST['load'])){
+
+                          $itemnameval = $_POST['itemnameval'];
+
+                        }
+
                        
 
                         if( isset($_POST['delete'])){
@@ -88,7 +95,7 @@
           echo "<td>" . $row['itemname'] . "</td>";
           echo "<td>" . $row['itemprice'] . "</td>";
           echo "<td>" . $row['itemdescription'] . "</td>";
-          echo "<td><input type='submit' value='Load' class='btn btn-danger' /></td>";
+          echo "<td><input type='submit' name='load' value='Load' class='btn btn-danger' /></td>";
           echo "<td><input type='submit' name='delete' value='Delete' class='btn btn-danger' /></td>";
           echo "</tr>";
           echo "</form>";
@@ -102,14 +109,15 @@
   </div>
 
   <div class="container">
-	  <form>
+	  <form action="Items.php" method="post">
       <div class="row">
         <div class="col-25">
           <label for="name">Item Name</label>
         </div>
         <div class="col-75">
+        <input type="text" id="itemid" name="itemid" value="<?php echo $_POST['itemid'] ?>" placeholder="Item Name.." hidden>
 
-          <input type="text" id="itemname" name="itemname" value="<?php echo $_POST['itemnameval'] ?>" placeholder="Item Name.." disabled>
+          <input type="text" id="itemnameup" name="itemnameup" value="<?php echo $_POST['itemnameval'] ?>" placeholder="Item Name..">
         </div> 
       </div>
       <div class="row">
@@ -118,7 +126,7 @@
         </div>
         <div class="col-75">
 
-          <input type="text" id="priceView" value="<?php echo $_POST['itempriceval'] ?>" placeholder="Price.." disabled>
+          <input type="text" id="itempriceup" name="itempriceup" value="<?php echo $_POST['itempriceval'] ?>" placeholder="Price.." >
         </div> 
       </div>
       <div class="row">
@@ -127,7 +135,7 @@
         </div>
         <div class="col-75">
 
-          <input type="text" id="genderView" value="<?php echo $_POST['genderval'] ?>" placeholder="Item for.." disabled>
+          <input type="text" id="genderView" name="genderup" value="<?php echo $_POST['genderval'] ?>" placeholder="Item for.." >
         </div> 
       </div>
       <div class="row">
@@ -136,7 +144,7 @@
         </div>
         <div class="col-75">
 
-          <input type="text" id="typeView" value="<?php echo $_POST['typeval'] ?>" placeholder="Type.." disabled>
+          <input type="text" id="typeup" name="typeup" value="<?php echo $_POST['typeval'] ?>" placeholder="Type.." >
         </div> 
       </div>
       <div class="row">
@@ -145,7 +153,7 @@
         </div>
         <div class="col-75">
 
-          <input type="text" id="contactView" value="<?php echo $_POST['contactdetailsval'] ?>" placeholder="Contact Details.." disabled>
+          <input type="text" id="contactdetailsup" name="contactdetailsup" value="<?php echo $_POST['contactdetailsval'] ?>" placeholder="Contact Details.." >
         </div> 
       </div>
       <div class="row">
@@ -154,16 +162,37 @@
         </div>
         <div class="col-75">
 
-          <input type="text" id="itemdescription" name="itemdescription" value="<?php echo $_POST['itemdescriptionval'] ?>" placeholder="Description.." disabled>
+          <input type="text" id="itemdescriptionup" name="itemdescriptionup" value="<?php echo $_POST['itemdescriptionval'] ?>" placeholder="Description.." >
         </div> 
       </div>
+
+      <div class="row">
+			  <input type="submit" name="update" value="Update">
+		  </div>
 
       <div>
                       <?php
 
-                        if( isset($_POST['update'])){
+                        if(isset($_POST['update'])){
 
-                          // $itemdescription = $_POST['itemid'];
+                          $id = $_POST['itemid'];
+                          $itemnameup = $_POST['itemnameup'];
+                          $itempriceup = $_POST['itempriceup'];
+                          $genderup = $_POST['genderup'];
+                          $typeup = $_POST['typeup'];
+                          $itemdescriptionup = $_POST['itemdescriptionup'];
+                          
+                          $sql = "UPDATE items SET itemname = '$itemnameup', itemprice = '$itempriceup' ,gender= '$genderup', type = '$typeup', itemdescription = '$itemdescriptionup'  WHERE id= '$id'";
+                          echo $sql;
+                          if($conn->query($sql) === TRUE){
+                      
+                            echo "<div class='alert alert-success'>Item updated Successfully</div>";
+                            echo("<meta http-equiv='refresh' content='1'>");
+    
+
+                         } else {
+                          echo "<div class='alert alert-success'>Item updated failed</div>";
+                         }
 
                         }
 
